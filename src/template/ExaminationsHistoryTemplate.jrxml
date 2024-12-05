@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dc9469f9-57a0-4427-943f-639d7eab71d3">
+    <property name="ireport.zoom" value="2.1435888100000033"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+    <style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+    <style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+    <style name="Detail" fontName="Arial" fontSize="12"/>
+    <parameter name="group_type" class="java.lang.String"/>
+    <parameter name="image_path" class="java.lang.String"/>
+    <queryString language="SQL">
+		<![CDATA[SELECT n.nama AS nama_nakes, p.nama AS nama_pasien, keluhan, diagnosis, 
+tindakan, id_resep_obat, tanggal_pemeriksaan
+FROM riwayat_pemeriksaan rpn
+INNER JOIN nakes n ON n.id = rpn.id_nakes
+INNER JOIN pasien p ON p.id = rpn.id_pasien;]]>
+    </queryString>
+    <field name="nama_nakes" class="java.lang.String"/>
+    <field name="nama_pasien" class="java.lang.String"/>
+    <field name="keluhan" class="java.lang.String"/>
+    <field name="diagnosis" class="java.lang.String"/>
+    <field name="tindakan" class="java.lang.String"/>
+    <field name="id_resep_obat" class="java.lang.String"/>
+    <field name="tanggal_pemeriksaan" class="java.sql.Date"/>
+    <group name="tanggal_pemeriksaan">
+        <groupExpression><![CDATA[new java.text.SimpleDateFormat("yyyy-MM").format($F{tanggal_pemeriksaan})]]></groupExpression>
+        <groupHeader>
+            <band height="40">
+                <textField pattern="">
+                    <reportElement style="SubTitle" x="47" y="0" width="506" height="36" forecolor="#CC0000" uuid="9e819596-ee48-4fdd-bc33-4c6f5b245a93"/>
+                    <textElement verticalAlignment="Middle">
+                        <font size="15" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMMM yyyy", 
+            new java.util.Locale("id", "ID")).format($F{tanggal_pemeriksaan})]]></textFieldExpression>
+                    <patternExpression><![CDATA[new java.text.SimpleDateFormat("MM-yyyy").format($F{tanggal_pemeriksaan})]]></patternExpression>
+                </textField>
+                <rectangle>
+                    <reportElement mode="Opaque" x="0" y="0" width="36" height="37" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="e9241c6f-7abe-4d04-8ecd-37d31235cdc0"/>
+                </rectangle>
+                <line>
+                    <reportElement positionType="FixRelativeToBottom" x="0" y="36" width="555" height="1" uuid="717860cb-3ce8-4822-b0fc-da57235cb8c5"/>
+                    <graphicElement>
+                        <pen lineWidth="0.5" lineColor="#999999"/>
+                    </graphicElement>
+                </line>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="1"/>
+        </groupFooter>
+    </group>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="70" splitType="Stretch">
+            <image>
+                <reportElement x="275" y="0" width="300" height="64" uuid="3b95ce9e-813f-44da-827b-371345b70124"/>
+                <imageExpression><![CDATA[$P{image_path}]]></imageExpression>
+            </image>
+            <staticText>
+                <reportElement style="Title" x="0" y="13" width="275" height="33" uuid="42338f53-29ff-4082-b904-4e817d070fae"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Riwayat Pemeriksaan]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="SubTitle" x="117" y="46" width="158" height="22" uuid="e8374559-14e9-467c-a1c6-56281e40c5a6"/>
+                <text><![CDATA[Leaf Red SubTitle]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="19" splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band height="52" splitType="Stretch">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="50" width="555" height="1" uuid="5b6919a9-e7ec-4c42-b230-b9c66ddb6b0d"/>
+                <graphicElement>
+                    <pen lineWidth="0.5" lineColor="#999999"/>
+                </graphicElement>
+            </line>
+            <textField>
+                <reportElement style="Detail" x="0" y="0" width="100" height="50" uuid="1621a34a-ce4d-4fbb-9ff4-faf162e5c662"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Detail" x="300" y="0" width="75" height="50" uuid="9a7c10a1-69b5-4d3f-a323-3fb7b50e7300"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{keluhan}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Detail" x="375" y="0" width="90" height="50" uuid="d794c57b-6663-4e3d-9c10-ddeb6ac074a1"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{diagnosis}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Detail" x="197" y="0" width="103" height="50" uuid="7cacccb1-d5a2-4548-9802-a32fde0d82cc"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="11"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{id_resep_obat}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="97" y="0" width="100" height="50" uuid="14262bc9-4d70-4235-8b43-315c69cdf670"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{nama_nakes}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="Detail" x="463" y="0" width="90" height="50" uuid="b4f17df7-f1f5-47f4-b3b2-6ddd76843b9c"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tindakan}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="3" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="a321ed90-546d-427e-8399-47f59a907792"/>
+                <textElement textAlignment="Right">
+                    <font size="10" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="f50a875d-dbf5-48fa-96cc-d1934ed8153c"/>
+                <textElement>
+                    <font size="10" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <textField pattern="EEEEE dd MMMMM yyyy">
+                <reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="52c72473-4d5d-48c4-8853-349d6ca96086"/>
+                <textElement>
+                    <font size="10" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

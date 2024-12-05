@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fedb1297-034a-4130-8564-e46216888d78">
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+                    pasien.nama AS nama_pasien, pasien.umur, pasien.jenis_kelamin, pembayaran.tanggal_pembayaran,
+                    obat.id AS id_obat, obat.nama AS nama_obat, detail_pembayaran.jumlah_obat,
+                    obat.satuan AS satuan_obat, detail_pembayaran.subtotal, pembayaran.total_harga
+                    FROM pembayaran
+                    INNER JOIN pasien ON pembayaran.id_pasien = pasien.id
+                    INNER JOIN detail_pembayaran ON pembayaran.id = detail_pembayaran.id
+                    INNER JOIN obat ON detail_pembayaran.id_obat = obat.id]]>
+	</queryString>
+	<field name="nama_pasien" class="java.lang.String"/>
+	<field name="umur" class="java.lang.Integer"/>
+	<field name="jenis_kelamin" class="java.lang.String"/>
+	<field name="tanggal_pembayaran" class="java.sql.Date"/>
+	<field name="id_obat" class="java.lang.String"/>
+	<field name="nama_obat" class="java.lang.String"/>
+	<field name="jumlah_obat" class="java.lang.Integer"/>
+	<field name="satuan_obat" class="java.lang.String"/>
+	<field name="subtotal" class="java.lang.Integer"/>
+	<field name="total_harga" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="e4a462ff-98f1-49a1-af07-5aebc37b554e"/>
+				<imageExpression><![CDATA["leaf_banner_red.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="251dd55c-2c9d-4b38-bf39-b135dd523232"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Red Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="f333142b-55f9-44ab-8c92-e1ab85f0470a"/>
+				<text><![CDATA[Leaf Red SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="dd468620-1c8f-49ce-b18f-bd03ac077420"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="55" height="15" uuid="706e898b-606b-408f-aa45-82074e124a79"/>
+				<text><![CDATA[nama_pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="55" y="19" width="55" height="15" uuid="9df06da1-c020-4a4b-9091-7d9ad5dab0f0"/>
+				<text><![CDATA[umur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="110" y="19" width="55" height="15" uuid="bd67118b-9ec6-4260-a334-24a75e9dc350"/>
+				<text><![CDATA[jenis_kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="165" y="19" width="55" height="15" uuid="56f16ea5-f05e-489a-a291-26620556768c"/>
+				<text><![CDATA[tanggal_pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="220" y="19" width="55" height="15" uuid="2f3e26e4-a7dc-48fc-82ea-5cde8d23c2cd"/>
+				<text><![CDATA[id_obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="275" y="19" width="55" height="15" uuid="ac0d6946-655e-482e-b375-56e508b76860"/>
+				<text><![CDATA[nama_obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="330" y="19" width="55" height="15" uuid="6d29966c-8a7f-4989-8164-0e9b008727f5"/>
+				<text><![CDATA[jumlah_obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="385" y="19" width="55" height="15" uuid="bccc864a-cbc3-4634-8f1c-94ccc8ffb653"/>
+				<text><![CDATA[satuan_obat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="440" y="19" width="55" height="15" uuid="f12444a7-2ab8-4b7e-989b-98148dfd9abb"/>
+				<text><![CDATA[subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="495" y="19" width="55" height="15" uuid="c56d24c0-4fab-43a7-a1c6-f3c1da26d76e"/>
+				<text><![CDATA[total_harga]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="00f64e6a-fb08-4748-aa52-6c5d30eca4ac"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="55" height="15" uuid="5d05c7f3-16d8-402c-99e8-2f91ee453577"/>
+				<textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="55" y="0" width="55" height="15" uuid="eb21f9ee-69b3-439c-9988-38d609317a8e"/>
+				<textFieldExpression><![CDATA[$F{umur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="110" y="0" width="55" height="15" uuid="2e5efc5a-f1ab-429f-9d6e-4c95cbcc8ccd"/>
+				<textFieldExpression><![CDATA[$F{jenis_kelamin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="165" y="0" width="55" height="15" uuid="34a51218-24f4-4a99-8c24-16aa0914f433"/>
+				<textFieldExpression><![CDATA[$F{tanggal_pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="220" y="0" width="55" height="15" uuid="5348902e-064e-4bfb-895f-fb37ec367ad0"/>
+				<textFieldExpression><![CDATA[$F{id_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="275" y="0" width="55" height="15" uuid="878f1f48-df8d-4412-a292-2d0ecaa337b2"/>
+				<textFieldExpression><![CDATA[$F{nama_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="330" y="0" width="55" height="15" uuid="3e40b426-d134-4309-b74c-95ccc9d771b7"/>
+				<textFieldExpression><![CDATA[$F{jumlah_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="385" y="0" width="55" height="15" uuid="70d50528-f5e5-4813-869e-5ae86fbedad9"/>
+				<textFieldExpression><![CDATA[$F{satuan_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="440" y="0" width="55" height="15" uuid="c214a6ea-3f86-4ecf-a9f2-782f9f896c13"/>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="495" y="0" width="55" height="15" uuid="f4031d7f-8e15-450d-af88-4e6703c53955"/>
+				<textFieldExpression><![CDATA[$F{total_harga}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="a4710988-e631-42b4-b7a1-a61a0fe1d017"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="39ef30ee-b7be-4bbc-8707-49bcb9ea826d"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="02ee54e3-e4dd-4737-8bed-1a86528d1c02"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="919884ea-e7db-46f6-ac1b-75ae8bfbe742"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

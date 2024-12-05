@@ -1,0 +1,198 @@
+@startuml
+annotation java.lang.Override
+annotation java.lang.SuppressWarnings
+class enums.MessageType
+class exceptions.ReportGenerationException
+class helper.AuthHelper
+class helper.BookingHelper
+class helper.ExaminationHelper
+class helper.HealthWorkerHelper
+class helper.MedicineHelper
+class helper.PatientHelper
+class helper.PatientHistoryHelper
+class helper.PaymentHelper
+class helper.PrecriptionDrugsHelper
+class java.awt.Color
+class java.awt.Container
+class java.awt.Cursor
+class java.awt.Dimension
+class java.awt.event.KeyEvent
+class java.sql.Connection
+class java.sql.ResultSet
+class java.sql.SQLException
+class java.util.ArrayList
+class java.util.HashMap
+class java.util.Stack
+class java.util.logging.Level
+class java.util.logging.Logger
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.JPanel
+class javax.swing.JTable
+class javax.swing.table.DefaultTableModel
+class puskesmas.pkg.App
+class puskesmas.pkg.frame.BookingPanel
+class puskesmas.pkg.frame.ExaminationPanel
+class puskesmas.pkg.frame.HealthWorkerPanel
+class puskesmas.pkg.frame.HistoriesPanel
+class puskesmas.pkg.frame.LoginFrame
+class puskesmas.pkg.frame.MedicinePanel
+class puskesmas.pkg.frame.MenuPanel
+class puskesmas.pkg.frame.PatientHistoryPanel
+class puskesmas.pkg.frame.PatientPanel
+class puskesmas.pkg.frame.PaymentPanel
+class puskesmas.pkg.frame.PrecriptionDrugsPanel
+class puskesmas.pkg.frame.SignUpPanel
+class util.IDGenerator
+class util.MessageUtil
+class util.TemplateGenerator
+class util.ValidationUtil
+interface puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.App ..> java.awt.Container
+puskesmas.pkg.App ..> java.util.Stack
+puskesmas.pkg.App ..> puskesmas.pkg.frame.LoginFrame
+puskesmas.pkg.frame.BookingPanel ..> java.lang.Override
+puskesmas.pkg.frame.BookingPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.BookingPanel ..> enums.MessageType
+puskesmas.pkg.frame.BookingPanel ..> helper.BookingHelper
+puskesmas.pkg.frame.BookingPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.BookingPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.BookingPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.BookingPanel ..> java.util.logging.Level
+puskesmas.pkg.frame.BookingPanel ..> java.util.logging.Logger
+puskesmas.pkg.frame.BookingPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.BookingPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.BookingPanel ..> util.MessageUtil
+puskesmas.pkg.frame.BookingPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.ExaminationPanel ..> java.lang.Override
+puskesmas.pkg.frame.ExaminationPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.ExaminationPanel ..> enums.MessageType
+puskesmas.pkg.frame.ExaminationPanel ..> helper.ExaminationHelper
+puskesmas.pkg.frame.ExaminationPanel ..> java.awt.event.KeyEvent
+puskesmas.pkg.frame.ExaminationPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.ExaminationPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.ExaminationPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.ExaminationPanel ..> java.util.HashMap
+puskesmas.pkg.frame.ExaminationPanel ..> java.util.logging.Level
+puskesmas.pkg.frame.ExaminationPanel ..> java.util.logging.Logger
+puskesmas.pkg.frame.ExaminationPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.ExaminationPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.ExaminationPanel ..> util.IDGenerator
+puskesmas.pkg.frame.ExaminationPanel ..> util.MessageUtil
+puskesmas.pkg.frame.ExaminationPanel ..> util.ValidationUtil
+puskesmas.pkg.frame.ExaminationPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.HealthWorkerPanel ..> java.lang.Override
+puskesmas.pkg.frame.HealthWorkerPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.HealthWorkerPanel ..> enums.MessageType
+puskesmas.pkg.frame.HealthWorkerPanel ..> helper.HealthWorkerHelper
+puskesmas.pkg.frame.HealthWorkerPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.HealthWorkerPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.HealthWorkerPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.HealthWorkerPanel ..> java.util.HashMap
+puskesmas.pkg.frame.HealthWorkerPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.HealthWorkerPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.HealthWorkerPanel ..> util.IDGenerator
+puskesmas.pkg.frame.HealthWorkerPanel ..> util.MessageUtil
+puskesmas.pkg.frame.HealthWorkerPanel ..> util.ValidationUtil
+puskesmas.pkg.frame.HealthWorkerPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.HistoriesPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.HistoriesPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.HistoriesPanel ..> util.TemplateGenerator
+puskesmas.pkg.frame.LoginFrame ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.LoginFrame ..> enums.MessageType
+puskesmas.pkg.frame.LoginFrame ..> helper.AuthHelper
+puskesmas.pkg.frame.LoginFrame ..> java.awt.Color
+puskesmas.pkg.frame.LoginFrame ..> java.awt.Cursor
+puskesmas.pkg.frame.LoginFrame ..> java.awt.event.KeyEvent
+puskesmas.pkg.frame.LoginFrame ..> java.sql.ResultSet
+puskesmas.pkg.frame.LoginFrame ..> java.sql.SQLException
+puskesmas.pkg.frame.LoginFrame ..> java.util.logging.Level
+puskesmas.pkg.frame.LoginFrame ..> java.util.logging.Logger
+puskesmas.pkg.frame.LoginFrame --|> javax.swing.JFrame
+puskesmas.pkg.frame.LoginFrame ..> puskesmas.pkg.App
+puskesmas.pkg.frame.LoginFrame ..> util.MessageUtil
+puskesmas.pkg.frame.MedicinePanel ..> java.lang.Override
+puskesmas.pkg.frame.MedicinePanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.MedicinePanel ..> helper.MedicineHelper
+puskesmas.pkg.frame.MedicinePanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.MedicinePanel ..> java.sql.SQLException
+puskesmas.pkg.frame.MedicinePanel ..> java.util.ArrayList
+puskesmas.pkg.frame.MedicinePanel ..> java.util.HashMap
+puskesmas.pkg.frame.MedicinePanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.MedicinePanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.MedicinePanel ..> util.IDGenerator
+puskesmas.pkg.frame.MedicinePanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.MenuPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.MenuPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.MenuPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.PatientHistoryPanel ..> java.lang.Override
+puskesmas.pkg.frame.PatientHistoryPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.PatientHistoryPanel ..> helper.PatientHistoryHelper
+puskesmas.pkg.frame.PatientHistoryPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.PatientHistoryPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.PatientHistoryPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.PatientHistoryPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.PatientHistoryPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.PatientHistoryPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.PatientPanel ..> java.lang.Override
+puskesmas.pkg.frame.PatientPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.PatientPanel ..> enums.MessageType
+puskesmas.pkg.frame.PatientPanel ..> helper.PatientHelper
+puskesmas.pkg.frame.PatientPanel ..> java.awt.Dimension
+puskesmas.pkg.frame.PatientPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.PatientPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.PatientPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.PatientPanel ..> java.util.HashMap
+puskesmas.pkg.frame.PatientPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.PatientPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.PatientPanel ..> util.IDGenerator
+puskesmas.pkg.frame.PatientPanel ..> util.MessageUtil
+puskesmas.pkg.frame.PatientPanel ..> util.ValidationUtil
+puskesmas.pkg.frame.PatientPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.PaymentPanel ..> java.lang.Override
+puskesmas.pkg.frame.PaymentPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.PaymentPanel ..> enums.MessageType
+puskesmas.pkg.frame.PaymentPanel ..> exceptions.ReportGenerationException
+puskesmas.pkg.frame.PaymentPanel ..> helper.PaymentHelper
+puskesmas.pkg.frame.PaymentPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.PaymentPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.PaymentPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.PaymentPanel ..> java.util.HashMap
+puskesmas.pkg.frame.PaymentPanel ..> java.util.logging.Level
+puskesmas.pkg.frame.PaymentPanel ..> java.util.logging.Logger
+puskesmas.pkg.frame.PaymentPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.PaymentPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.PaymentPanel ..> util.IDGenerator
+puskesmas.pkg.frame.PaymentPanel ..> util.MessageUtil
+puskesmas.pkg.frame.PaymentPanel ..> util.TemplateGenerator
+puskesmas.pkg.frame.PaymentPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.lang.Override
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> enums.MessageType
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> helper.MedicineHelper
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> helper.PrecriptionDrugsHelper
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.sql.Connection
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.sql.ResultSet
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.sql.SQLException
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.util.ArrayList
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.util.HashMap
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.util.logging.Level
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> java.util.logging.Logger
+puskesmas.pkg.frame.PrecriptionDrugsPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> util.IDGenerator
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> util.MessageUtil
+puskesmas.pkg.frame.PrecriptionDrugsPanel ..> util.ValidationUtil
+puskesmas.pkg.frame.PrecriptionDrugsPanel --|> puskesmas.pkg.frame.PanelBase
+puskesmas.pkg.frame.SignUpPanel ..> java.lang.SuppressWarnings
+puskesmas.pkg.frame.SignUpPanel ..> helper.AuthHelper
+puskesmas.pkg.frame.SignUpPanel ..> java.awt.Color
+puskesmas.pkg.frame.SignUpPanel ..> java.awt.Cursor
+puskesmas.pkg.frame.SignUpPanel ..> java.util.HashMap
+puskesmas.pkg.frame.SignUpPanel ..> javax.swing.JOptionPane
+puskesmas.pkg.frame.SignUpPanel --|> javax.swing.JPanel
+puskesmas.pkg.frame.SignUpPanel ..> puskesmas.pkg.App
+puskesmas.pkg.frame.PanelBase ..> java.util.ArrayList
+puskesmas.pkg.frame.PanelBase ..> javax.swing.JTable
+puskesmas.pkg.frame.PanelBase ..> javax.swing.table.DefaultTableModel
+@enduml

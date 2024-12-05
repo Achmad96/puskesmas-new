@@ -1,0 +1,33 @@
+@startuml
+class puskesmas.pkg.App
+class puskesmas.pkg.exception.ReportGenerationException
+class puskesmas.pkg.frame.BookingPanel
+class puskesmas.pkg.frame.ExaminationPanel
+class puskesmas.pkg.frame.HealthWorkerPanel
+class puskesmas.pkg.frame.HistoriesPanel
+class puskesmas.pkg.frame.LoginFrame
+class puskesmas.pkg.frame.MedicinePanel
+class puskesmas.pkg.frame.MenuPanel
+class puskesmas.pkg.frame.PatientHistoryPanel
+class puskesmas.pkg.frame.PatientPanel
+class puskesmas.pkg.frame.PaymentPanel
+class puskesmas.pkg.frame.PrecriptionDrugsPanel
+class puskesmas.pkg.frame.SignUpPanel
+class puskesmas.pkg.helper.AuthHelper
+class puskesmas.pkg.helper.BookingHelper
+class puskesmas.pkg.helper.ExaminationHelper
+class puskesmas.pkg.helper.HealthWorkerHelper
+class puskesmas.pkg.helper.Helper
+class puskesmas.pkg.helper.MedicineHelper
+class puskesmas.pkg.helper.PatientHelper
+class puskesmas.pkg.helper.PatientHistoryHelper
+class puskesmas.pkg.helper.PaymentHelper
+class puskesmas.pkg.helper.PrecriptionDrugsHelper
+class puskesmas.pkg.util.DatabaseConnection
+class puskesmas.pkg.util.IDGenerator
+class puskesmas.pkg.util.MessageUtil
+class puskesmas.pkg.util.TemplateGenerator
+class puskesmas.pkg.util.ValidationUtil
+enum puskesmas.pkg.enums.MessageType
+interface puskesmas.pkg.frame.PanelBase
+@enduml

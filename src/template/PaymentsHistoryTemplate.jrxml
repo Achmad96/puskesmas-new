@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ce06ec1-2c2c-4d14-81a4-67022cd89638">
+	<property name="ireport.zoom" value="1.8150000000000026"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="group_type" class="java.lang.String"/>
+	<parameter name="image_path" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+                    pasien.nama AS nama_pasien, pasien.umur, pasien.jenis_kelamin, pembayaran.tanggal_pembayaran,
+                    obat.id AS id_obat, obat.nama AS nama_obat, detail_pembayaran.jumlah_obat,
+                    obat.satuan AS satuan_obat, detail_pembayaran.subtotal, pembayaran.total_harga
+                    FROM pembayaran
+                    INNER JOIN pasien ON pembayaran.id_pasien = pasien.id
+                    INNER JOIN detail_pembayaran ON pembayaran.id = detail_pembayaran.id
+                    INNER JOIN obat ON detail_pembayaran.id_obat = obat.id]]>
+	</queryString>
+	<field name="nama_pasien" class="java.lang.String"/>
+	<field name="umur" class="java.lang.Integer"/>
+	<field name="jenis_kelamin" class="java.lang.String"/>
+	<field name="tanggal_pembayaran" class="java.sql.Date"/>
+	<field name="id_obat" class="java.lang.String"/>
+	<field name="nama_obat" class="java.lang.String"/>
+	<field name="jumlah_obat" class="java.lang.Integer"/>
+	<field name="satuan_obat" class="java.lang.String"/>
+	<field name="subtotal" class="java.lang.Integer"/>
+	<field name="total_harga" class="java.lang.Integer"/>
+	<group name="tanggal_pembayaran">
+		<groupExpression><![CDATA[$P{group_type} ? new java.text.SimpleDateFormat("MMMM yyyy", 
+            new java.util.Locale("id", "ID")).format($F{tanggal_pembayaran}) :
+            new java.text.SimpleDateFormat("yyyy", new java.util.Locale("id", "ID")).format($F{tanggal_pembayaran})]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="0" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="aac2d1e5-4c4e-466d-8655-8f8d6b60f382"/>
+				</rectangle>
+				<textField>
+					<reportElement x="47" y="0" width="216" height="24" forecolor="#CCCC00" uuid="ca829f57-d12d-4976-901c-d98f8048ba00"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{group_type} ? new java.text.SimpleDateFormat("MMMM yyyy", 
+            new java.util.Locale("id", "ID")).format($F{tanggal_pembayaran}):new java.text.SimpleDateFormat("yyyy", 
+            new java.util.Locale("id", "ID")).format($F{tanggal_pembayaran})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="nama_pasien">
+		<groupExpression><![CDATA[$F{nama_pasien}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement style="SubTitle" x="36" y="0" width="216" height="24" forecolor="#CC0000" uuid="4f97e36c-bc01-42f5-b62e-5ebff423c57f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="252" y="0" width="139" height="24" forecolor="#CC0000" uuid="0fde8e23-c767-47f9-bbcb-12123846a02c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{umur} + " tahun"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="391" y="0" width="164" height="24" forecolor="#CC0000" uuid="8f449dc9-4f2f-49b6-82be-0e8998f45ad1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{jenis_kelamin} == "L" ? "Laki - laki" : "Perempuan"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="37">
+				<line>
+					<reportElement x="0" y="0" width="555" height="1" uuid="4ff59291-1f7c-4830-a985-66a2f3c2c6fe"/>
+				</line>
+				<staticText>
+					<reportElement style="Column header" x="136" y="1" width="127" height="34" uuid="e6d90be9-c352-42a3-ae21-81b0c91086d5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<text><![CDATA[Total harga]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement style="Detail" x="324" y="0" width="218" height="35" uuid="ba586677-6201-4bc8-8b81-ff92296771f6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{total_harga}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="305" y="0" width="19" height="35" uuid="0a428c03-c821-43bb-8e84-e4acd5a828f0"/>
+					<textElement verticalAlignment="Middle">
+						<font size="11"/>
+					</textElement>
+					<text><![CDATA[Rp]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="35" width="555" height="1" uuid="ad1230cd-f55e-40c6-a839-78175e2f89d9"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="76" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="495ac2e9-3465-4eab-9f10-0526e64d667b"/>
+				<imageExpression><![CDATA[$P{image_path}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="1fabd829-af07-4bdd-9e16-b6355191e120"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Riwayat Pembayaran]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="125" y="50" width="138" height="20" forecolor="#666666" uuid="6482afb8-2693-489b-aece-60633f2af580"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="7" width="555" height="1" uuid="be3adcd2-6413-4e4d-a58a-3cea5ab58ff7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="130" y="8" width="175" height="25" uuid="f16695ea-43f4-4b4b-9ccd-cfb0d8a62a3e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="305" y="8" width="126" height="25" uuid="6b62da39-818b-447b-92aa-d29dcd30f412"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jumlah_obat} + " " + $F{satuan_obat}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Detail" x="431" y="8" width="122" height="25" uuid="e83d42d3-9367-41d9-9bd2-dcf1634045b2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="47" y="8" width="83" height="25" uuid="64ff9c48-402f-4707-8b33-ea51fb4b74d4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_obat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f4804b7e-bf78-4085-acd1-aa5bdcb52413"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="5dac58c0-b829-45d8-b7ab-2719e70ec5ed"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}+" dari"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="d3977144-f844-40c7-8960-ffb91117325f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="a846af39-ce07-4738-b242-983119cd79b1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy", new java.util.Locale("id", "ID")).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
